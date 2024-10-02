@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: #0C0C0C;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: flex;
+  gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card {
+  width: 300px;
+  height: 260px;
+  background-color: rgba(225, 225, 225, 0.1);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  pointer-events: none; /* Mouse etkileşimlerini engelle */
+  opacity: 0; /* Başlangıçta görünmez */
+  transition: opacity 0.3s;
+}
+
+.content {
+  padding: 20px;
+  color: rgba(255, 255, 255, 1);
+  z-index: 1;
+}
+
+h2 {
+  margin: 0;
+}
+
+p {
+  margin-top: 10px;
+  color: rgba(155, 155, 155, 1);
 }
