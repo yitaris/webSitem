@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Image from 'react-bootstrap/Image';
 import profilPic from './snapBitmoji.png';
-import { FaYoutube, FaInstagram, FaLinkedin, FaGithub, FaAlignJustify } from 'react-icons/fa';
 
 function App() {
   return (
@@ -42,10 +41,10 @@ function App() {
                   </address>
                   <div className='flex flex-col mt-4 w-fit'>
                     <h2 className='header2'>Sosyal medya</h2>
-                    <li><a href='https://www.linkedin.com/in/yigitbayir137/' target='_blank'>Linkedin</a></li>
-                    <li><a href='https://github.com/yitaris/' target='_blank'>Github</a></li>
-                    <li><a href='https://www.youtube.com/@yitariss' target='_blank'>Youtube</a></li>
-                    <li className='mb-4'><a href='https://www.instagram.com/yiitbayy' target='_blank'>İnstagram</a></li>
+                    <li><a href='https://www.linkedin.com/in/yigitbayir137/' target='_blank' rel="noreferrer">Linkedin</a></li>
+                    <li><a href='https://github.com/yitaris/' target='_blank' rel="noreferrer">Github</a></li>
+                    <li><a href='https://www.youtube.com/@yitariss' target='_blank' rel="noreferrer">Youtube</a></li>
+                    <li className='mb-4'><a href='https://www.instagram.com/yiitbayy' target='_blank' rel="noreferrer">İnstagram</a></li>
                   </div>
                 </Col>
                 <Col style={{ backgroundColor: 'transparent', height: '100%' }}>
