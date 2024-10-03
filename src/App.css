@@ -1,58 +1,73 @@
-body {
-  background-color: #0C0C0C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+body{
+  padding: 0px !important;
+  margin: 0px !important;
+  background-color: #111 !important;
+}
+li{
+  list-style: none;
+  font-family: Cabinet Grotesk, sans-serif !important;
+}
+a{
+  color:inherit !important;
+  text-decoration: inherit !important;
+  font-family: Cabinet Grotesk, sans-serif !important;
+}
+address{
+  font-style: italic !important;
+}
+.header1{
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+  font-family: Cabinet Grotesk, sans-serif;
   margin: 0;
 }
-
-.container {
-  display: flex;
-  gap: 20px;
-}
-
-.card {
-  width: 300px;
-  height: 260px;
-  background-color: rgba(225, 225, 225, 0.1);
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-.glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 10px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
-  pointer-events: none; /* Mouse etkileşimlerini engelle */
-  opacity: 0; /* Başlangıçta görünmez */
-  transition: opacity 0.3s;
-}
-
-.content {
-  padding: 20px;
-  color: rgba(255, 255, 255, 1);
-  z-index: 1;
-}
-
-h2 {
+.header2{
+  color: rgba(155,155,155,1);
   margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: Cabinet Grotesk, sans-serif;
+}
+.p{
+  font-size: 1rem;
+  margin: 0;
+  font-family: Cabinet Grotesk, sans-serif;
+}
+.aboutme{
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-family: Satoshi;
+  font-weight: 300;
 }
 
-p {
-  margin-top: 10px;
-  color: rgba(155, 155, 155, 1);
+/*  */
+.scroll-container {
+  height: 500px; /* Sadece bir ikonun görünmesini sağlayacak yükseklik */
+  overflow-y: hidden; /* Taşan içeriği gizle */
+  transition: height 0.3s ease-in-out;
 }
+
+.scroll-container:hover {
+  overflow-y: scroll; /* Üzerine gelindiğinde kaydırma aktifleşsin */
+}
+
+.icon-container a {
+  display: block;
+  font-size: 5rem;
+  color: white;
+  margin-bottom: 100px;
+  text-align: center;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.icon-container a:hover {
+  transform: scale(1.5);
+  color: #00aced; /* İkon rengi hover sırasında değişebilir */
+}
+
+/* Scroll barın tasarımını gizlemek veya stilize etmek isterseniz: */
+.scroll-container::-webkit-scrollbar {
+  width: 0px; /* Scroll bar genişliği */
+}
+/*  */
