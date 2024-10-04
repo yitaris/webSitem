@@ -21,10 +21,6 @@ function App() {
   },[]);
 
   return (
-    <Container
-      fluid
-      className='containerMain'
-    >
         <Row className='mainBox g-3 m-0 p-0'>
           <Col xs={12} lg={8} className='p-0'>
             <div class="row g-3 m-0" style={{height:'100%'}}>
@@ -171,7 +167,6 @@ function App() {
 
           </Col>
         </Row>
-    </Container>
 
   );
 }
