@@ -1,7 +1,10 @@
-html,body{
-  padding: 0px !important;
-  margin: 0px !important;
+body{
+  display: flex !important;
   background-color: #121212 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 li{
   list-style: none;
@@ -16,34 +19,10 @@ a{
 address{
   font-style: italic !important;
 }
-@media (max-width: 500px) {
-  .containerMain {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-  }
-  .header1{
-    font-size: 1.15rem !important;
-  }
-  .header2{
-    font-size: 0.9rem !important;
-  }
-  .p{
-    font-size: 0.85rem !important;
-  }
-}
-
-/* Büyük ekranlar için align-items: center */
-@media (min-width: 1200px) {
-  .containerMain {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mainBox{
-    align-items: stretch !important;
-    justify-content: center !important;
-  }
+.mainBox{
+  height: 100vh;
+  justify-content: center !important;
+  align-items: center !important;
 }
 .green-light {
   width: 12px; /* Işık boyutu */
@@ -151,35 +130,12 @@ address{
   font-weight: 300;
   color:white;
 }
-
-/*  */
-.scroll-container {
-  height: 200px; /* Sadece bir ikonun görünmesini sağlayacak yükseklik */
-  overflow-y: hidden; /* Taşan içeriği gizle */
-  transition: height 0.3s ease-in-out;
+.icon-container{
+  display: flex;
+  justify-content: space-between;
 }
-
-.scroll-container:hover {
-  overflow-y: scroll; /* Üzerine gelindiğinde kaydırma aktifleşsin */
-}
-
 .icon-container a {
-  display: block;
-  font-size: 5rem;
-  color: white;
-  margin-bottom: 40px;
-  text-align: center;
-  transition: transform 0.3s, color 0.3s;
-}
-
-.icon-container a:hover {
-  transform: scale(1.5);
-  color: #00aced; /* İkon rengi hover sırasında değişebilir */
-}
-
-/* Scroll barın tasarımını gizlemek veya stilize etmek isterseniz: */
-.scroll-container::-webkit-scrollbar {
-  width: 0px; /* Scroll bar genişliği */
+  font-size: 2.5rem;
 }
 .icon1{
   color:red !important
@@ -192,4 +148,29 @@ address{
 }
 .icon4{
   color:rgb(128, 124, 127) !important
+}
+
+@media (max-width: 980px) , (max-height: 600px) {
+  .mainBox{
+    align-items: baseline !important;
+  }
+  .header1{
+    font-size: 1.15rem !important;
+  }
+  .header2{
+    font-size: 0.9rem !important;
+  }
+  .p{
+    font-size: 0.85rem !important;
+  }
+  .time{
+    font-size: 3rem !important;
+  }
+}
+
+/* Büyük ekranlar için align-items: center */
+@media (min-width: 980px) {
+  .icon-container a{
+    font-size: 3.5;
+  }
 }
