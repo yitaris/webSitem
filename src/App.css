@@ -3,6 +3,9 @@ body{
   margin: 0px !important;
   background-color: #111 !important;
 }
+h2{
+  color:white !important
+}
 li{
   list-style: none;
   font-family: Cabinet Grotesk, sans-serif !important;
@@ -15,12 +18,17 @@ a{
 address{
   font-style: italic !important;
 }
+.box{
+  border-radius: 14px;
+  padding: 20px;
+}
 .header1{
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.75rem;
   font-family: Cabinet Grotesk, sans-serif;
   margin: 0;
+  color:white
 }
 .header2{
   color: rgba(155,155,155,1);
