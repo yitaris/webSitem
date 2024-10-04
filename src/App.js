@@ -24,9 +24,7 @@ function App() {
     <Container
       fluid
       className='containerMain'
-      style={{height:'100vh' }}
     >
-    
         <Row className='mainBox g-3 m-0 p-0'>
           <Col xs={12} lg={8} className='p-0'>
             <div class="row g-3 m-0" style={{height:'100%'}}>
