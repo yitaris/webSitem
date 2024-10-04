@@ -3,12 +3,10 @@ body{
   margin: 0px !important;
   background-color: #111 !important;
 }
-h2{
-  color:white !important
-}
 li{
   list-style: none;
   font-family: Cabinet Grotesk, sans-serif !important;
+  color:white
 }
 a{
   color:inherit !important;
@@ -17,6 +15,102 @@ a{
 }
 address{
   font-style: italic !important;
+}
+@media (max-width: 500px) {
+  .containerMain {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
+}
+
+/* Büyük ekranlar için align-items: center */
+@media (min-width: 1200px) {
+  .containerMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mainBox{
+    height:50% !important;
+    width: 60% !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+  }
+}
+.green-light {
+  width: 12px; /* Işık boyutu */
+  height: 12px; /* Işık boyutu */
+  border-radius: 50%; /* Yuvarlak yapmak için */
+  background-color: rgb(121, 245, 121); /* Yeşil rengi */
+  animation: pulse 1.5s infinite; /* Dalga animasyonu */
+}
+
+/* Dalga animasyonu */
+@keyframes pulse {
+  0% {
+    transform: scale(1.5); /* Başlangıç boyutu */
+    opacity: 1; /* Tam görünür */
+  }
+  50% {
+    transform: scale(1.5); /* Dalga boyutu */
+    opacity: 1; /* Yarı görünür */
+  }
+  100% {
+    transform: scale(1.5); /* En büyük boyutu */
+    opacity: 1; /* Görünmez */
+  }
+}
+
+.green-light::before {
+  content: ''; /* İçerik ekleme */
+  position: absolute; /* Pozisyon */
+  width: 100%; /* Dalgaların genişliği */
+  height: 100%; /* Dalgaların yüksekliği */
+  border-radius: 50%; /* Yuvarlak yapmak için */
+  background: rgb(110, 247, 110); /* Yarı saydam yeşil rengi */
+  animation: wave 1.5s infinite; /* Dalga animasyonu */
+  opacity: 0; /* Başlangıçta görünmez */
+}
+
+/* İkinci dalga */
+.green-light::after {
+  content: ''; /* İçerik ekleme */
+  position: absolute; /* Pozisyon */
+  width: 100%; /* Dalgaların genişliği */
+  height: 100%; /* Dalgaların yüksekliği */
+  border-radius: 50%; /* Yuvarlak yapmak için */
+  background: rgb(116, 247, 116); /* Yarı saydam yeşil rengi */
+  animation: wave 1.5s infinite; /* Dalga animasyonu */
+  animation-delay: 0.75s; /* Yarım saniye gecikmeli başlasın */
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1); /* Başlangıç boyutu */
+    opacity: 0.7; /* Yarı görünür */
+  }
+  100% {
+    transform: scale(2); /* Dalga boyutu */
+    opacity: 0; /* Görünmez */
+  }
+}
+
+.arrowIcon{
+  font-size: 24px !important;
+  color:white !important;
+  transform: rotate(-45deg);
+  cursor: pointer !important;
+  transition: .3s ease-in;
+}
+.arrowIcon:hover{
+  transform: rotate(-45deg) translate(10px,0px) scale(1.1);
+}
+.time{
+  color:white !important;
+  font-size: 100px !important;
+  font-family: Zodiak;
+  text-align: center;
 }
 .box{
   border-radius: 14px;
@@ -41,17 +135,18 @@ address{
   font-size: 1rem;
   margin: 0;
   font-family: Cabinet Grotesk, sans-serif;
+  color:white
 }
 .aboutme{
   font-size: .875rem;
   line-height: 1.25rem;
-  font-family: Satoshi;
   font-weight: 300;
+  color:white;
 }
 
 /*  */
 .scroll-container {
-  height: 500px; /* Sadece bir ikonun görünmesini sağlayacak yükseklik */
+  height: 200px; /* Sadece bir ikonun görünmesini sağlayacak yükseklik */
   overflow-y: hidden; /* Taşan içeriği gizle */
   transition: height 0.3s ease-in-out;
 }
@@ -64,7 +159,7 @@ address{
   display: block;
   font-size: 5rem;
   color: white;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   text-align: center;
   transition: transform 0.3s, color 0.3s;
 }
@@ -78,4 +173,15 @@ address{
 .scroll-container::-webkit-scrollbar {
   width: 0px; /* Scroll bar genişliği */
 }
-/*  */
+.icon1{
+  color:red !important
+}
+.icon2{
+  color:rgb(136, 20, 126) !important
+}
+.icon3{
+  color:rgb(39, 92, 161) !important
+}
+.icon4{
+  color:rgb(128, 124, 127) !important
+}
