@@ -32,7 +32,6 @@ address{
   animation: pulse 1.5s infinite; /* Dalga animasyonu */
 }
 
-/* Dalga animasyonu */
 @keyframes pulse {
   0% {
     transform: scale(1.5); /* Başlangıç boyutu */
