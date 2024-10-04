@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   return (
-    <div className='container d-flex mainBox m-0 p-0'>
+    <div className='container d-flex mainBox m-0'>
       <div className='row g-3'>
       <div className='p-0 col-lg-8'>
         <div className="row g-3 m-0 " style={{ height: '100%' }}>
