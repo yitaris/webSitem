@@ -24,14 +24,14 @@ function App() {
     <Container
       fluid
       className='containerMain'
-      style={{height:'100vh', margin: 0, padding: 0 }}
+      style={{height:'100vh' }}
     >
-      <Row style={{alignItems:'center',justifyContent:'center'}}>
+    
         <Row className='mainBox g-3 m-0 p-0'>
           <Col xs={12} lg={8} className='p-0'>
             <div class="row g-3 m-0" style={{height:'100%'}}>
               <div class="col-lg-12 m-0" style={{}}>
-                <div class="box" style={{backgroundColor:'#181C14',height:'100%'}}>
+                <div class="box" style={{height:'100%'}}>
                   <Row style={{height:'100%'}}>
                     <Col xs={6} lg={8}>
                       <h2 className='header2 mb-2'> Hoşgeldiniz </h2>
@@ -53,7 +53,7 @@ function App() {
                 <div class="" style={{height:'100%'}}>
                   <div class='row g-3 ' style={{height:'100%',marginTop:0}}>
                     <div class='col-lg-4 ' style={{}}>
-                      <div class='box' style={{backgroundColor:'#181C14',height:'100%'}}>
+                      <div class='box' style={{height:'100%'}}>
                         <h1 className='header1'>Benimle iletişime geç!</h1>
                         <address className='flex flex-col mt-4'>
                           <h2 className='header2'>İletişim bilgileri</h2>
@@ -73,7 +73,7 @@ function App() {
                       <div style={{height:'100%'}}>
                         <div class='row g-3 m-0' style={{height:'100%'}}>
                           <div class='box col-lg-12 m-0'
-                               style={{backgroundColor:'#181C14',
+                               style={{
                                padding:20,
                                flexDirection:'col',
                                alignItems:'center',justifyContent:'center'}}>
@@ -85,7 +85,7 @@ function App() {
                               <div class='col' style={{height:'100%'}}>
                                 <div class='box'
                                      style={{
-                                             backgroundColor:'#181C14',height:'100%',
+                                             height:'100%',
                                              display:'flex',
                                              justifyContent:'space-between',
                                             }}>
@@ -95,7 +95,7 @@ function App() {
                               </div>
                               <div class='col' style={{height:'100%'}}>
                                 <div class='box'
-                                     style={{backgroundColor:'#181C14',height:'100%',}}>
+                                     style={{height:'100%',}}>
                                     <div style={{display:'flex',
                                                 justifyContent:'space-between',
                                                 marginBottom:20
@@ -122,7 +122,7 @@ function App() {
           </Col>
           
           <Col xs={12} lg={4} className='' style={{}}>
-            <div class='box'style={{backgroundColor:'#181C14',height:'100%'}}>
+            <div class='box'style={{height:'100%'}}>
               <div style={{height:'50%'}}>
                 <header>
                   <h2 className='header2 mb-2'>Hakkımda</h2>
@@ -173,7 +173,6 @@ function App() {
 
           </Col>
         </Row>
-      </Row>
     </Container>
 
   );

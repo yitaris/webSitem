@@ -1,7 +1,7 @@
-body{
+html,body{
   padding: 0px !important;
   margin: 0px !important;
-  background-color: #111 !important;
+  background-color: #121212 !important;
 }
 li{
   list-style: none;
@@ -32,8 +32,6 @@ address{
     justify-content: center;
   }
   .mainBox{
-    height:50% !important;
-    width: 60% !important;
     align-items: stretch !important;
     justify-content: center !important;
   }
@@ -112,9 +110,10 @@ address{
   font-family: Zodiak;
   text-align: center;
 }
-.box{
+.box {
   border-radius: 14px;
   padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Daha ince görünüm için yarı saydamlık */
 }
 .header1{
   font-size: 1.25rem;
