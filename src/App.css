@@ -22,6 +22,15 @@ address{
     align-items: baseline;
     justify-content: center;
   }
+  .header1{
+    font-size: 1.15rem !important;
+  }
+  .header2{
+    font-size: 0.9rem !important;
+  }
+  .p{
+    font-size: 0.85rem !important;
+  }
 }
 
 /* Büyük ekranlar için align-items: center */
@@ -116,9 +125,9 @@ address{
   border: 1px solid rgba(255, 255, 255, 0.3); /* Daha ince görünüm için yarı saydamlık */
 }
 .header1{
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* Responsive yazı boyutu için uygun bir değer */
   font-weight: 700;
-  line-height: 1.75rem;
+  line-height: 1.2;
   font-family: Cabinet Grotesk, sans-serif;
   margin: 0;
   color:white
@@ -126,7 +135,7 @@ address{
 .header2{
   color: rgba(155,155,155,1);
   margin: 0;
-  font-size: inherit;
+  font-size: 1rem;
   font-weight: inherit;
   font-family: Cabinet Grotesk, sans-serif;
 }
