@@ -19,6 +19,13 @@ a{
 address{
   font-style: italic !important;
 }
+.carousel-image{
+  filter:blur(5px);
+  transition: .3s ease-in;
+}
+.carousel-image:hover{
+  filter: blur(0px);
+}
 .mainBox{
   height: 100vh;
   justify-content: center !important;
@@ -31,7 +38,6 @@ address{
   background-color: rgb(121, 245, 121); /* Yeşil rengi */
   animation: pulse 1.5s infinite; /* Dalga animasyonu */
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1.5); /* Başlangıç boyutu */
@@ -46,7 +52,6 @@ address{
     opacity: 1; /* Görünmez */
   }
 }
-
 .green-light::before {
   content: ''; /* İçerik ekleme */
   position: absolute; /* Pozisyon */
@@ -57,7 +62,6 @@ address{
   animation: wave 1.5s infinite; /* Dalga animasyonu */
   opacity: 0; /* Başlangıçta görünmez */
 }
-
 /* İkinci dalga */
 .green-light::after {
   content: ''; /* İçerik ekleme */
@@ -69,7 +73,6 @@ address{
   animation: wave 1.5s infinite; /* Dalga animasyonu */
   animation-delay: 0.75s; /* Yarım saniye gecikmeli başlasın */
 }
-
 @keyframes wave {
   0% {
     transform: scale(1); /* Başlangıç boyutu */
@@ -80,7 +83,6 @@ address{
     opacity: 0; /* Görünmez */
   }
 }
-
 .arrowIcon{
   font-size: 24px !important;
   color:white !important;
@@ -90,12 +92,6 @@ address{
 }
 .arrowIcon:hover{
   transform: rotate(-45deg) translate(10px,0px) scale(1.1);
-}
-.time{
-  color:white !important;
-  font-size: 5rem !important;
-  font-family: Zodiak;
-  text-align: center;
 }
 .box {
   border-radius: 14px;
@@ -120,7 +116,6 @@ address{
 .p{
   font-size: 1rem;
   margin: 0;
-  font-family: Cabinet Grotesk, sans-serif;
   color:white
 }
 .aboutme{
@@ -131,10 +126,14 @@ address{
 }
 .icon-container{
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 .icon-container a {
-  font-size: 2.5rem;
+  display: flex;
+  font-size: 3.5rem;
+  align-items: center;
+  justify-content: center;
 }
 .icon1{
   color:red !important
@@ -153,23 +152,9 @@ address{
   .mainBox{
     align-items: baseline !important;
   }
-  .header1{
-    font-size: 1.15rem !important;
-  }
-  .header2{
-    font-size: 0.9rem !important;
-  }
-  .p{
-    font-size: 0.85rem !important;
-  }
-  .time{
-    font-size: 3rem !important;
-  }
 }
 
 /* Büyük ekranlar için align-items: center */
 @media (min-width: 980px) {
-  .icon-container a{
-    font-size: 3.5;
-  }
+
 }
