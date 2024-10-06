@@ -1,5 +1,5 @@
 /* ver 16 imported */
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
@@ -8,8 +8,20 @@ import profilPic from './snapBitmoji.png';
 import {FaArrowRight } from 'react-icons/fa';
 import LogoList from './components/LogoList';
 import SocialMediaList from './components/SocialMediaList';
+import { motion, Variants } from 'framer-motion';
 
+const itemVariants: Variants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 300, damping: 24 }
+  },
+  closed: { opacity: 0, y:20, transition: { duration: .2 }}
+}
 function App() {
+
+  const [ isOpen, setIsOpen ] = useState(false);
+
   return (
     <div className='container d-flex mainBox m-0'>
       <div className='row g-3'>
@@ -20,6 +32,60 @@ function App() {
                 <div className='row' style={{ height: '100%' }}>
                   <div className='col-lg-8'>
                     <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20 }}>Hoşgeldiniz</h2>
+                    <motion.nav
+                      initial={false}
+                      animate={isOpen ? 'open' : 'closed'}
+                      className='menu'
+                    >
+                      <motion.button
+                        whileTap={{scale: 0.97}}
+                        onClick={()=> setIsOpen(!isOpen)}
+                        style={{width:'50%',borderRadius:18,color:'purple'}}
+                      >
+                        Menu
+                        <motion.div
+                          variants={{
+                            open: { rotate: 180 },
+                            closed: { rotate: 0 }
+                          }}
+                          transition={{ duration: 0.2 }}
+                          style={{ originY: 0.55 }}
+                        >
+                          <svg width="15" height="15" viewBox="0 0 20 20">
+                            <path d="M0 7 L 20 7 L 10 16" />
+                          </svg>
+                        </motion.div>
+                      </motion.button>
+                      <motion.ul
+                        variants={{
+                          open: {
+                            clipPath: "inset(0% 0% 0% 0% round 10px)",
+                            transition: {
+                              type: "spring",
+                              bounce: 0,
+                              duration: 0.7,
+                              delayChildren: 0.3,
+                              staggerChildren: 0.05
+                            }
+                          },
+                          closed: {
+                            clipPath: "inset(10% 50% 90% 50% round 10px)",
+                            transition: {
+                              type: "spring",
+                              bounce: 0,
+                              duration: 0.3
+                            }
+                          }
+                        }}
+                        style={{display:'flex',flexDirection:'column',alignItems:'center',width:'50%',padding:0,pointerEvents: isOpen ? "auto" : "none" }}
+                      >
+                        <motion.li variants={itemVariants} style={{width:'90%',backgroundColor:'white',color:'purple',padding:5,borderRadius:10,marginBottom:2}}>Item 1 </motion.li>
+                        <motion.li variants={itemVariants} style={{width:'90%',backgroundColor:'white',color:'purple',padding:5,borderRadius:10,marginBottom:2}}>Item 1 </motion.li>
+                        <motion.li variants={itemVariants} style={{width:'90%',backgroundColor:'white',color:'purple',padding:5,borderRadius:10,marginBottom:2}}>Item 1 </motion.li>
+                        <motion.li variants={itemVariants} style={{width:'90%',backgroundColor:'white',color:'purple',padding:5,borderRadius:10,marginBottom:2}}>Item 1 </motion.li>
+                        <motion.li variants={itemVariants} style={{width:'90%',backgroundColor:'white',color:'purple',padding:5,borderRadius:10}}>Item 1 </motion.li>
+                      </motion.ul>
+                    </motion.nav>
                     <p className='p'>Merhaba 👋 Ben Tam Zamanlı Mobile App Developerım. React Native ile kullanıcı
                       dostu ve performans odaklı mobil uygulamalar geliştirme konusunda tutkuluyum.
                     </p>
@@ -146,7 +212,7 @@ function App() {
                 <header>
                   <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20}}>Hakkımda</h2>
                 </header>
-                <p className='p' style={{color:'white'}}>
+                <p className='p' style={{color:'white',paddingRight:40,paddingLeft:40}}>
                   Merhabalar ben yiğit, Türkiye'de Sakarya ilçesinde doğdum. 20 yaşındayım, 6 yıldır yazılımla uğraşmaktayım.
                   Hergün kendimi geliştirip daha iyi olmaya çalışıyorum.
                 </p>
