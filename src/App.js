@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import Image from 'react-bootstrap/Image';
 import profilPic from './snapBitmoji.png';
-import { FaArrowRight } from 'react-icons/fa';
-import { FaYoutube, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
+import {FaArrowRight } from 'react-icons/fa';
+import LogoList from './components/LogoList';
+import SocialMediaList from './components/SocialMediaList';
 
 function App() {
-
-  useEffect(() => {
-  }, []);
-
   return (
     <div className='container d-flex mainBox m-0'>
       <div className='row g-3'>
@@ -22,9 +19,9 @@ function App() {
                 <div className='row' style={{ height: '100%' }}>
                   <div className='col-lg-8'>
                     <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20 }}>Hoşgeldiniz</h2>
-                    <h1 className='header1'>Merhaba 👋 Ben Tam Zamanlı Mobile App Developerım. React Native ile kullanıcı
+                    <p className='p'>Merhaba 👋 Ben Tam Zamanlı Mobile App Developerım. React Native ile kullanıcı
                       dostu ve performans odaklı mobil uygulamalar geliştirme konusunda tutkuluyum.
-                    </h1>
+                    </p>
                   </div>
                   <div xs={12} lg={4} className=' col-lg-4 d-flex justify-content-center align-items-center'>
                     <Image src={profilPic} style={{ width: '100%', height: 'auto', maxWidth: 200 }} />
@@ -46,48 +43,23 @@ function App() {
                           <p className='p' style={{ textAlign: 'center', }}>Türkiye / Sakarya</p>
                         </address>
                       </div>
-                      <div className='icon-container row g-3 mt-4'>
-                        <h2 className='header2' style={{ fontSize: '1.1rem', textAlign: 'center', fontStyle: 'italic' }}>Sosyal medya</h2>
-                        <div class='col-3 col-sm-6'>
-                          <a href='https://www.youtube.com/@yitariss' target='_blank' rel='noopener noreferrer' className='icon1'>
-                            <FaYoutube />
-                          </a>
-                        </div>
-                        <div class='col-3 col-sm-6'>
-                          <a href='https://www.instagram.com/yiitbayy' target='_blank' rel='noopener noreferrer' className='icon2'>
-                            <FaInstagram />
-                          </a>
-                        </div>
-                        <div class='col-3 col-sm-6'>
-                          <a href='https://www.linkedin.com/in/yigitbayir137/' target='_blank' rel='noopener noreferrer' className='icon3'>
-                            <FaLinkedin />
-                          </a>
-                        </div>
-                        <div class='col-3 col-sm-6'>
-                          <a href='https://github.com/yitaris/' target='_blank' rel='noopener noreferrer' className='icon4'>
-                            <FaGithub />
-                          </a>
-                        </div>
-                      </div>
+                      <SocialMediaList />
                     </div>
                   </div>
                   <div className='col-lg-8'>
                     <div style={{ height: '100%' }}>
                       <div className='row g-3 m-0' style={{ height: '100%' }}>
-                        <div className='box col-lg-12 m-0 p-0'
-                          style={{
-                            display: 'flex', border: '0px',
-                            alignItems: 'center', justifyContent: 'center',
-                          }}>
+                        <div className='box col-lg-12 m-0 '
+                          style={{ padding: 0 }}>
                           {/* Projeler animasyonu buraya gelecek */}
-                          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                          <div id="carouselExampleInterval" class="carousel slide p-0 m-0" data-bs-ride="carousel" style={{ height: '100%', borderRadius: 14, overflow: 'hidden' }}>
                             <div class="carousel-indicators">
                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
-                            <div class="carousel-inner" style={{ borderRadius: 14 }}>
-                              <div class="carousel-item active carousel-item-start" data-bs-interval="2000">
+                            <div class="carousel-inner p-0 m-0" style={{ height: '100%' }}>
+                              <div class="carousel-item active carousel-item-start" data-bs-interval="2000" style={{ height: '100%' }}>
                                 <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 2 }}>
                                   <FaArrowRight className='arrowIcon' />
                                 </div>
@@ -168,33 +140,22 @@ function App() {
 
         <div className=' col-lg-4'>
           <div className='box' style={{ height: '100%' }}>
-            <div style={{ height: '50%' }}>
-              <header>
-                <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20 }}>Hakkımda</h2>
-              </header>
-              <p className='header1' style={{ marginBottom: 30 }}>
-                Merhabalar ben yiğit, Türkiye'de Sakarya ilçesinde doğdum. 20 yaşındayım, 6 yıldır yazılımla uğraşmaktayım.
-                Hergün kendimi geliştirip daha iyisi olmaya çalışıyorum. İşte yeteneklerim:
-              </p>
-              <h2 className='header2 mb-2'>Yeteneklerim</h2>
-              <div>
-                <ul style={{ listStyle: 'none', padding: 0 }}>
-                  <li>C++</li>
-                  <li>Python</li>
-                  <li>JavaScript</li>
-                  <li>Arduino</li>
-                  <li>bootstrap</li>
-                  <li>Firebase</li>
-                  <li>Supabase</li>
-                  <li>Clerk</li>
-                  <li>PLC</li>
-                </ul>
+            <div class='row g-3'>
+              <div class='col-12'>
+                <header>
+                  <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20 }}>Hakkımda</h2>
+                </header>
+                <p className='p' style={{color:'white'}}>
+                  Merhabalar ben yiğit, Türkiye'de Sakarya ilçesinde doğdum. 20 yaşındayım, 6 yıldır yazılımla uğraşmaktayım.
+                  Hergün kendimi geliştirip daha iyi olmaya çalışıyorum.
+                </p>
               </div>
-              <p className='header1' style={{ marginTop: 30 }}>
-                Ana yeteneklerin dışında bahsedecek olursak, iyi bir gözlemciyimdir.
-                Takım ve organizasyonlara adapte olmakta zorluk çekmem.
-                Okuduğun için teşekkür ederim.
-              </p>
+              <div class='col-12'>
+                <header>
+                  <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20, textAlign: 'center' }}>Yeteneklerim</h2>
+                </header>
+                <LogoList />
+              </div>
             </div>
           </div>
         </div>
