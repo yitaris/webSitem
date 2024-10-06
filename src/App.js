@@ -1,3 +1,4 @@
+/* ver 15 imported */
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -141,9 +142,9 @@ function App() {
         <div className=' col-lg-4'>
           <div className='box' style={{ height: '100%' }}>
             <div class='row g-3'>
-              <div class='col-12'>
+              <div class='col-12 d-flex flex-column align-items-center justify-content-center'>
                 <header>
-                  <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20 }}>Hakkımda</h2>
+                  <h2 className='header2' style={{ fontSize: '2rem', marginBottom: 20}}>Hakkımda</h2>
                 </header>
                 <p className='p' style={{color:'white'}}>
                   Merhabalar ben yiğit, Türkiye'de Sakarya ilçesinde doğdum. 20 yaşındayım, 6 yıldır yazılımla uğraşmaktayım.
