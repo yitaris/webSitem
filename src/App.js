@@ -11,6 +11,8 @@ function Model({ onLoaded, setShowAboutMe }) {
     // Modelin referansı
     const modelRef = useRef();
     const previousTouchY = useRef(0); // useRef ile previousTouchY tanımlandı
+    // Ekran boyutuna göre ölçek belirleme
+    const scaleValue = window.innerWidth < 768 ? 2.5 : 4; // 768 pikselden küçükse 2.5, değilse 4
 
     useEffect(() => {
         if (scene) {
@@ -18,6 +20,9 @@ function Model({ onLoaded, setShowAboutMe }) {
             // Modelin Y eksenindeki pozisyonunu -3 yap
             modelRef.current.position.y = -3;
 
+             // Modelin ölçeğini ayarla
+             modelRef.current.scale.set(scaleValue, scaleValue, scaleValue);
+             
             // "Animation" adındaki animasyonu kontrol et ve oynat
             if (actions && actions['Animation']) {
                 actions['Animation'].play(); // Animasyonu oynat
