@@ -177,14 +177,3 @@ address{
 .icon4{
   color:rgb(128, 124, 127) !important
 }
-
-@media (max-width: 980px) , (max-height: 754px) {
-  
-
-}
-
-/* Büyük ekranlar için align-items: center */
-@media (min-width: 980px) {
-
-}
-
