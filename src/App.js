@@ -9,10 +9,8 @@ function Model({ onLoaded, setShowAboutMe }) {
 
     // Modelin referansı
     const modelRef = useRef();
-    
     // Dokunma pozisyonunu saklamak için değişken
     let previousTouchY = 0;
-
     useEffect(() => {
         if (scene) {
             onLoaded();
