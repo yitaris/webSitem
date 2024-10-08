@@ -58,11 +58,11 @@ function Model({ onLoaded, setShowAboutMe }) {
                 // Z pozisyonunu sınırlayın
                 if (modelRef.current.position.z < 0) {
                     modelRef.current.position.z = 0;
-                } else if (modelRef.current.position.z > 8.5) {
-                    modelRef.current.position.z = 8.5;
+                } else if (modelRef.current.position.z > 9) {
+                    modelRef.current.position.z = 9;
                 }
                 // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
-                if (modelRef.current.position.z >= 8) {
+                if (modelRef.current.position.z >= 7) {
                     setShowAboutMe(true); // "Hakkımda" sayfasını göster
                 } else {
                     setShowAboutMe(false); // "Hakkımda" sayfasını gizle
@@ -85,14 +85,15 @@ function Model({ onLoaded, setShowAboutMe }) {
                 previousTouchY.current = touchY; // Güncelle
                 if (modelRef.current) {
                     modelRef.current.position.z += delta * 0.01; // Z ekseninde yakınlaştır
+                    
                     // Z pozisyonunu sınırlayın
                     if (modelRef.current.position.z < 0) {
                         modelRef.current.position.z = 0;
-                    } else if (modelRef.current.position.z > 8) {
-                        modelRef.current.position.z = 8;
+                    } else if (modelRef.current.position.z > 9) {
+                        modelRef.current.position.z = 9;
                     }
                     // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
-                    if (modelRef.current.position.z >= 8) {
+                    if (modelRef.current.position.z >= 7 ){
                         setShowAboutMe(true); // "Hakkımda" sayfasını göster
                     } else {
                         setShowAboutMe(false); // "Hakkımda" sayfasını gizle
@@ -118,8 +119,13 @@ function Model({ onLoaded, setShowAboutMe }) {
 }
 
 function AboutMe({ isVisible }) {
+  useEffect(() => {
+    if (isVisible) {
+        window.scrollTo(0, 0); // Sayfa en üstten başlat
+    }
+}, [isVisible]);
     return (
-        <div className={`about-me ${isVisible ? 'fade-in' : 'fade-out'}`}>
+        <div className={`about-me ${isVisible ? 'fade-in' : 'fade-out'}`} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
             <About />
         </div>
     );
