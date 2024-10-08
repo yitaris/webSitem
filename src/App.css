@@ -35,6 +35,7 @@ address{
 }
 .mainBox{
   height: 100vh;
+  background-color: blue;
   justify-content: center !important;
   align-items: center !important;
 }
