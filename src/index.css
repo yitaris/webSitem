@@ -5,24 +5,22 @@ canvas {
   touch-action: none !important; /* Dokunma hareketlerini engelle */
 }
 .about-me {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  pointer-events: none; /* Etkileşimi engelle */
+  position: fixed; /* Sayfayı sabitler */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ekranın tamamını kaplar */
+  height: 100%; /* Ekranın tamamını kaplar */
+  overflow-y: auto; /* Dikey kaydırmayı aktif hale getirir */
+  color: white; /* Yazı rengi */
+  transition: opacity 0.5s ease; /* Fade-in ve fade-out animasyonu */
 }
 
 .fade-in {
-  opacity: 1; /* Görünür hale gel */
-  pointer-events: auto; /* Etkileşimi etkinleştir */
+  opacity: 1; /* Görünürlük */
 }
 
 .fade-out {
-  opacity: 0; /* Gizli hale gel */
+  opacity: 0; /* Görünmez */
 }
 li{
   list-style: none;
