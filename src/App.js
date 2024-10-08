@@ -28,34 +28,45 @@ function Model({ onLoaded, setShowAboutMe }) {
 
     // Scroll olayını dinle
     useEffect(() => {
-        const handleScroll = (event) => {
-            const delta = event.deltaY * 0.001; // Scroll miktarını ayarla
-            if (modelRef.current) {
-                modelRef.current.position.z += delta; // Z ekseninde yakınlaştır
-                if (modelRef.current.position.z < 0) {
-                    modelRef.current.position.z = 0;
-                }
-                else if(modelRef.current.position.z > 8.5 ) {
-                        modelRef.current.position.z = 8.5
-                }
-                console.log(modelRef.current.position.z);
-                // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
-                if (modelRef.current.position.z >= 8) {
-                    setShowAboutMe(true); // "Hakkımda" sayfasını göster
-                } else {
-                    setShowAboutMe(false); // "Hakkımda" sayfasını gizle
-                }
-            }
-        };
-
-        // Scroll olayını ekle
-        window.addEventListener('wheel', handleScroll);
-
-        // Temizleme işlemi
-        return () => {
-            window.removeEventListener('wheel', handleScroll);
-        };
-    }, [setShowAboutMe]);
+      let previousTouchY = 0; // Dokunma pozisyonunu saklamak için
+      const handleScroll = (event) => {
+          let delta;
+          // Mobil cihazlarda dokunma olayını kontrol et
+          if (event.type === 'wheel') {
+              delta = event.deltaY * 0.001; // Mouse scroll için
+          } else if (event.type === 'touchmove') {
+              delta = event.touches[0].clientY - previousTouchY; // Dokunma hareketi için
+              previousTouchY = event.touches[0].clientY; // Son pozisyonu güncelle
+          }
+  
+          if (modelRef.current) {
+              modelRef.current.position.z += delta; // Z ekseninde yakınlaştır
+              if (modelRef.current.position.z < 0) {
+                  modelRef.current.position.z = 0;
+              } else if (modelRef.current.position.z > 8.5) {
+                  modelRef.current.position.z = 8.5;
+              }
+              console.log(modelRef.current.position.z);
+  
+              // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
+              if (modelRef.current.position.z >= 8) {
+                  setShowAboutMe(true); // "Hakkımda" sayfasını göster
+              } else {
+                  setShowAboutMe(false); // "Hakkımda" sayfasını gizle
+              }
+          }
+      };
+  
+      // Scroll olaylarını ekle
+      window.addEventListener('wheel', handleScroll);
+      window.addEventListener('touchmove', handleScroll);
+  
+      // Temizleme işlemi
+      return () => {
+          window.removeEventListener('wheel', handleScroll);
+          window.removeEventListener('touchmove', handleScroll);
+      };
+  }, [setShowAboutMe]);
 
     return <primitive ref={modelRef} object={scene} scale={4} />;
 }

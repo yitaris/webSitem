@@ -1,3 +1,9 @@
+body {
+  overflow: hidden !important; /* Overflow'u gizleyin, aksi halde kaydırma çubuğu görünebilir */
+}
+canvas {
+  touch-action: none !important; /* Dokunma hareketlerini engelle */
+}
 .about-me {
   position: absolute;
   width: 100vw;
