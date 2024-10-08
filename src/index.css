@@ -179,9 +179,7 @@ address{
 }
 
 @media (max-width: 980px) , (max-height: 754px) {
-  .mainBox{
-    align-items: baseline !important;
-  }
+  
 
 }
 
