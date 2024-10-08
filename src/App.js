@@ -3,12 +3,16 @@ import { Canvas } from '@react-three/fiber';
 import { useGLTF, useAnimations, OrbitControls } from '@react-three/drei';
 import './index.css'; // Fade-in için CSS dosyası
 import About from './Model.js';
+
 function Model({ onLoaded, setShowAboutMe }) {
     const { scene, animations } = useGLTF('/box_aquarium.glb'); // GLB dosyanızın yolu
     const { actions } = useAnimations(animations, scene); // Animasyonları al
 
     // Modelin referansı
     const modelRef = useRef();
+    
+    // Dokunma pozisyonunu saklamak için değişken
+    let previousTouchY = 0;
 
     useEffect(() => {
         if (scene) {
@@ -28,45 +32,44 @@ function Model({ onLoaded, setShowAboutMe }) {
 
     // Scroll olayını dinle
     useEffect(() => {
-      let previousTouchY = 0; // Dokunma pozisyonunu saklamak için
-      const handleScroll = (event) => {
-          let delta;
-          // Mobil cihazlarda dokunma olayını kontrol et
-          if (event.type === 'wheel') {
-              delta = event.deltaY * 0.001; // Mouse scroll için
-          } else if (event.type === 'touchmove') {
-              delta = event.touches[0].clientY - previousTouchY; // Dokunma hareketi için
-              previousTouchY = event.touches[0].clientY; // Son pozisyonu güncelle
-          }
-  
-          if (modelRef.current) {
-              modelRef.current.position.z += delta; // Z ekseninde yakınlaştır
-              if (modelRef.current.position.z < 0) {
-                  modelRef.current.position.z = 0;
-              } else if (modelRef.current.position.z > 8.5) {
-                  modelRef.current.position.z = 8.5;
-              }
-              console.log(modelRef.current.position.z);
-  
-              // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
-              if (modelRef.current.position.z >= 8) {
-                  setShowAboutMe(true); // "Hakkımda" sayfasını göster
-              } else {
-                  setShowAboutMe(false); // "Hakkımda" sayfasını gizle
-              }
-          }
-      };
-  
-      // Scroll olaylarını ekle
-      window.addEventListener('wheel', handleScroll);
-      window.addEventListener('touchmove', handleScroll);
-  
-      // Temizleme işlemi
-      return () => {
-          window.removeEventListener('wheel', handleScroll);
-          window.removeEventListener('touchmove', handleScroll);
-      };
-  }, [setShowAboutMe]);
+        const handleScroll = (event) => {
+            let delta;
+            // Mobil cihazlarda dokunma olayını kontrol et
+            if (event.type === 'wheel') {
+                delta = -event.deltaY * 0.001; // Mouse scroll için (negatif değer)
+            } else if (event.type === 'touchmove') {
+                delta = previousTouchY - event.touches[0].clientY; // Dokunma hareketi için (negatif değer)
+                previousTouchY = event.touches[0].clientY; // Son pozisyonu güncelle
+            }
+
+            if (modelRef.current) {
+                modelRef.current.position.z += delta; // Z ekseninde yakınlaştır
+                if (modelRef.current.position.z < 0) {
+                    modelRef.current.position.z = 0;
+                } else if (modelRef.current.position.z > 8.5) {
+                    modelRef.current.position.z = 8.5;
+                }
+                console.log(modelRef.current.position.z);
+
+                // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
+                if (modelRef.current.position.z >= 8) {
+                    setShowAboutMe(true); // "Hakkımda" sayfasını göster
+                } else {
+                    setShowAboutMe(false); // "Hakkımda" sayfasını gizle
+                }
+            }
+        };
+
+        // Scroll olaylarını ekle
+        window.addEventListener('wheel', handleScroll);
+        window.addEventListener('touchmove', handleScroll);
+
+        // Temizleme işlemi
+        return () => {
+            window.removeEventListener('wheel', handleScroll);
+            window.removeEventListener('touchmove', handleScroll);
+        };
+    }, [setShowAboutMe]);
 
     return <primitive ref={modelRef} object={scene} scale={4} />;
 }
