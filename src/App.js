@@ -20,9 +20,9 @@ function Model({ onLoaded, setShowAboutMe }) {
             // Modelin Y eksenindeki pozisyonunu -3 yap
             modelRef.current.position.y = -3;
 
-             // Modelin ölçeğini ayarla
-             modelRef.current.scale.set(scaleValue, scaleValue, scaleValue);
-             
+            // Modelin ölçeğini ayarla
+            modelRef.current.scale.set(scaleValue, scaleValue, scaleValue);
+
             // "Animation" adındaki animasyonu kontrol et ve oynat
             if (actions && actions['Animation']) {
                 actions['Animation'].play(); // Animasyonu oynat
@@ -31,7 +31,7 @@ function Model({ onLoaded, setShowAboutMe }) {
                 console.error('Animasyon bulunamadı!');
             }
         }
-    }, [scene, onLoaded, actions]);
+    }, [scene, onLoaded, actions, scaleValue]); // scaleValue eklendi
 
     // Scroll olayını dinle
     useEffect(() => {
