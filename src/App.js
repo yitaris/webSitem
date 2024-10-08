@@ -4,7 +4,7 @@ import { useGLTF, useAnimations, OrbitControls } from '@react-three/drei';
 import './index.css'; // Fade-in için CSS dosyası
 import About from './Model.js';
 
-function Model({ onLoaded, setShowAboutMe }) {
+function Model({ onLoaded, setShowAboutMe, showAboutMe }) {
     const { scene, animations } = useGLTF('/box_aquarium.glb'); // GLB dosyanızın yolu
     const { actions } = useAnimations(animations, scene); // Animasyonları al
 
@@ -47,7 +47,7 @@ function Model({ onLoaded, setShowAboutMe }) {
                 console.error('Animasyon bulunamadı!');
             }
         }
-    }, [scene, onLoaded, actions, scaleValue, positionY]); // scaleValue ve positionY eklendi
+    }, [scene, onLoaded, actions, scaleValue, positionY]);
 
     // Scroll olayını dinle
     useEffect(() => {
@@ -55,17 +55,20 @@ function Model({ onLoaded, setShowAboutMe }) {
             const delta = event.deltaY * 0.001; // Scroll miktarını ayarla
             if (modelRef.current) {
                 modelRef.current.position.z += delta; // Z ekseninde yakınlaştır
-                console.log(modelRef.current.position.z)
+                
                 // Z pozisyonunu sınırlayın
                 if (modelRef.current.position.z < 0) {
                     modelRef.current.position.z = 0;
                 } else if (modelRef.current.position.z > 9) {
                     modelRef.current.position.z = 9;
                 }
-                // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
+                
+                // Model Z pozisyonu 7 veya daha büyük olduğunda "hakkımda" sayfasını göster
                 if (modelRef.current.position.z >= 7) {
                     setShowAboutMe(true); // "Hakkımda" sayfasını göster
-                } else {
+                } 
+                // Model Z pozisyonu 7'nin altında olduğunda "hakkımda" sayfasını gizle
+                else if (modelRef.current.position.z < 7 && showAboutMe) {
                     setShowAboutMe(false); // "Hakkımda" sayfasını gizle
                 }
             }
@@ -80,32 +83,32 @@ function Model({ onLoaded, setShowAboutMe }) {
         };
 
         const handleTouchMove = (event) => {
-          if (event.touches.length > 0) {
-              const touchY = event.touches[0].clientY;
-              const delta = previousTouchY.current - touchY; // Kaydırma farkı
-              previousTouchY.current = touchY; // Güncelle
-              
-              if (modelRef.current) {
-                  modelRef.current.position.z += delta * 0.01; // Z ekseninde yakınlaştır
-                  
-                  // Z pozisyonunu sınırlayın
-                  if (modelRef.current.position.z < 0) {
-                      modelRef.current.position.z = 0;
-                  } else if (modelRef.current.position.z > 9) {
-                      modelRef.current.position.z = 9;
-                  }
-                  
-                  // Model Z pozisyonu 7 veya daha büyük olduğunda "hakkımda" sayfasını göster
-                  if (modelRef.current.position.z >= 7) {
-                      setShowAboutMe(true); // "Hakkımda" sayfasını göster
-                  } 
-                  // Model Z pozisyonu 7'nin altında olduğunda "hakkımda" sayfasını gizle
-                  else if (modelRef.current.position.z < 7 && showAboutMe) {
-                      setShowAboutMe(false); // "Hakkımda" sayfasını gizle
-                  }
-              }
-          }
-      };
+            if (event.touches.length > 0) {
+                const touchY = event.touches[0].clientY;
+                const delta = previousTouchY.current - touchY; // Kaydırma farkı
+                previousTouchY.current = touchY; // Güncelle
+                
+                if (modelRef.current) {
+                    modelRef.current.position.z += delta * 0.01; // Z ekseninde yakınlaştır
+                    
+                    // Z pozisyonunu sınırlayın
+                    if (modelRef.current.position.z < 0) {
+                        modelRef.current.position.z = 0;
+                    } else if (modelRef.current.position.z > 9) {
+                        modelRef.current.position.z = 9;
+                    }
+                    
+                    // Model Z pozisyonu 7 veya daha büyük olduğunda "hakkımda" sayfasını göster
+                    if (modelRef.current.position.z >= 7) {
+                        setShowAboutMe(true); // "Hakkımda" sayfasını göster
+                    } 
+                    // Model Z pozisyonu 7'nin altında olduğunda "hakkımda" sayfasını gizle
+                    else if (modelRef.current.position.z < 7 && showAboutMe) {
+                        setShowAboutMe(false); // "Hakkımda" sayfasını gizle
+                    }
+                }
+            }
+        };
 
         // Scroll olayını ekle
         window.addEventListener('wheel', handleScroll);
@@ -118,17 +121,18 @@ function Model({ onLoaded, setShowAboutMe }) {
             window.removeEventListener('touchstart', handleTouchStart); // Dokunma başlangıcını temizle
             window.removeEventListener('touchmove', handleTouchMove); // Dokunma hareketini temizle
         };
-    }, [setShowAboutMe]);
+    }, [setShowAboutMe, showAboutMe]); // showAboutMe eklendi
 
     return <primitive ref={modelRef} object={scene} scale={4} />;
 }
 
 function AboutMe({ isVisible }) {
-  useEffect(() => {
-    if (isVisible) {
-        window.scrollTo(0, 0); // Sayfa en üstten başlat
-    }
-}, [isVisible]);
+    useEffect(() => {
+        if (isVisible) {
+            window.scrollTo(0, 0); // Sayfa en üstten başlat
+        }
+    }, [isVisible]);
+
     return (
         <div className={`about-me ${isVisible ? 'fade-in' : 'fade-out'}`} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
             <About />
@@ -147,7 +151,7 @@ function App() {
             >
                 <ambientLight intensity={0.5} />
                 <directionalLight intensity={1} />
-                <Model onLoaded={() => console.log("Model Yüklendi")} setShowAboutMe={setShowAboutMe} />
+                <Model onLoaded={() => console.log("Model Yüklendi")} setShowAboutMe={setShowAboutMe} showAboutMe={showAboutMe} />
                 <OrbitControls enableRotate={false} enableZoom={false} enablePan={false} />
             </Canvas>
             <AboutMe isVisible={showAboutMe} />
