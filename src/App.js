@@ -11,14 +11,30 @@ function Model({ onLoaded, setShowAboutMe }) {
     // Modelin referansı
     const modelRef = useRef();
     const previousTouchY = useRef(0); // useRef ile previousTouchY tanımlandı
-    // Ekran boyutuna göre ölçek belirleme
-    const scaleValue = window.innerWidth < 768 ? 2.5 : 4; // 768 pikselden küçükse 2.5, değilse 4
+    const [scaleValue, setScaleValue] = useState(window.innerWidth < 768 ? 3.5 : 4); // Başlangıç değerleri
+    const [positionY, setPositionY] = useState(window.innerWidth < 768 ? -2 : -3);
+
+    useEffect(() => {
+        const handleResize = () => {
+            // Ekran boyutuna göre ölçek ve pozisyon değerlerini güncelle
+            setScaleValue(window.innerWidth < 768 ? 3.5 : 4);
+            setPositionY(window.innerWidth < 768 ? -2 : -3);
+        };
+
+        // Pencere boyutu değiştiğinde handleResize'ı dinle
+        window.addEventListener('resize', handleResize);
+
+        // Temizleme işlemi
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         if (scene) {
             onLoaded();
-            // Modelin Y eksenindeki pozisyonunu -3 yap
-            modelRef.current.position.y = -3;
+            // Modelin Y eksenindeki pozisyonunu güncelle
+            modelRef.current.position.y = positionY;
 
             // Modelin ölçeğini ayarla
             modelRef.current.scale.set(scaleValue, scaleValue, scaleValue);
@@ -31,7 +47,7 @@ function Model({ onLoaded, setShowAboutMe }) {
                 console.error('Animasyon bulunamadı!');
             }
         }
-    }, [scene, onLoaded, actions, scaleValue]); // scaleValue eklendi
+    }, [scene, onLoaded, actions, scaleValue, positionY]); // scaleValue ve positionY eklendi
 
     // Scroll olayını dinle
     useEffect(() => {
@@ -72,8 +88,8 @@ function Model({ onLoaded, setShowAboutMe }) {
                     // Z pozisyonunu sınırlayın
                     if (modelRef.current.position.z < 0) {
                         modelRef.current.position.z = 0;
-                    } else if (modelRef.current.position.z > 8.5) {
-                        modelRef.current.position.z = 8.5;
+                    } else if (modelRef.current.position.z > 8) {
+                        modelRef.current.position.z = 8;
                     }
                     // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
                     if (modelRef.current.position.z >= 8) {
