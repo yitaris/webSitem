@@ -34,12 +34,12 @@ function Model({ onLoaded, setShowAboutMe }) {
             const delta = event.deltaY * 0.001; // Scroll miktarını ayarla
             if (modelRef.current) {
                 modelRef.current.position.z += delta; // Z ekseninde yakınlaştır
+                // Z pozisyonunu sınırlayın
                 if (modelRef.current.position.z < 0) {
                     modelRef.current.position.z = 0;
                 } else if (modelRef.current.position.z > 8.5) {
                     modelRef.current.position.z = 8.5;
                 }
-                console.log(modelRef.current.position.z);
                 // Model Z pozisyonu 8 veya daha büyük olduğunda "hakkımda" sayfasını göster
                 if (modelRef.current.position.z >= 8) {
                     setShowAboutMe(true); // "Hakkımda" sayfasını göster
@@ -50,6 +50,13 @@ function Model({ onLoaded, setShowAboutMe }) {
         };
 
         // Dokunma olayını dinle
+        const handleTouchStart = (event) => {
+            // İlk dokunuşta Y pozisyonunu ayarlayın
+            if (event.touches.length > 0) {
+                previousTouchY.current = event.touches[0].clientY; // İlk dokunuşu sakla
+            }
+        };
+
         const handleTouchMove = (event) => {
             if (event.touches.length > 0) {
                 const touchY = event.touches[0].clientY;
@@ -75,12 +82,14 @@ function Model({ onLoaded, setShowAboutMe }) {
 
         // Scroll olayını ekle
         window.addEventListener('wheel', handleScroll);
-        window.addEventListener('touchmove', handleTouchMove); // Dokunma olayını ekle
+        window.addEventListener('touchstart', handleTouchStart); // Dokunma başlangıcını ekle
+        window.addEventListener('touchmove', handleTouchMove); // Dokunma hareketini ekle
 
         // Temizleme işlemi
         return () => {
             window.removeEventListener('wheel', handleScroll);
-            window.removeEventListener('touchmove', handleTouchMove); // Dokunma olayını temizle
+            window.removeEventListener('touchstart', handleTouchStart); // Dokunma başlangıcını temizle
+            window.removeEventListener('touchmove', handleTouchMove); // Dokunma hareketini temizle
         };
     }, [setShowAboutMe]);
 
